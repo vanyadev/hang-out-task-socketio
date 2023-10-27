@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/group.css" />
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="/group.js" defer></script>
+    <script>
+      const grpName = '<%= grpName %>';
+      const grpID = '<%= grpID %>';
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <title><%= grpName %> Group</title>
+  </head>
+  <body class="pt-3 px-3">
+    <p class="fs-4">
+      You are inside
+      <span class="fw-semibold"><%= grpName %></span>
+      group!
+    </p>
+    <div
+      class="modal fade"
+      id="connectedUsersGrpModal"
+      tabindex="-1"
+      aria-labelledby="connectedUsersGrpModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="connectedUsersGrpModal">
+              Connected Users
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <ul id="connectedUsersGrpMobile" class="list-group"></ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              id="modalCloseUsersGrp"
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="gridContainer">
+      <div id="chatApp">
+        <p id="connectionStatus" class="fe-semibold fs-4"></p>
+        <div class="d-flex justify-content-between">
+          <button id="leaveGroup" class="btn btn-info mb-3">
+            Leave the group
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary d-lg-none mb-3"
+            data-bs-toggle="modal"
+            data-bs-target="#connectedUsersGrpModal"
+          >
+            Connected users
+          </button>
+        </div>
+        <p id="typing"></p>
+        <ul id="messages"></ul>
+      </div>
+      <div id="listOfUsers">
+        <h1 class="d-none d-lg-inline">Connected Users</h1>
+        <ul id="connectedUsers" class="list-group d-none d-lg-block"></ul>
+      </div>
+      <div>
+        <form id="grpMsgForm">
+          <input id="grpMsgInput" autocomplete="off" />
+          <button>Send To All</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
